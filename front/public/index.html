@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Main</title>
+</head>
+<body>
+
+    <!-- Navbar-->
+    <div class="navbar">
+        <a href="" class="logo">Tindoo</a>
+        <div class="nav-links">
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="#">Personal</a></li>
+                <li><a href="#">Support</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">etc.</a></li>
+
+            </ul>
+        </div>
+    </div>
+
+    <section>
+
+
+        <div class="header container">
+    
+            <div class="middle-text">
+                <h1>Hi ! I'm Peem</h1>
+                <h2>I'm a freshy CEDT strudent from CU</h2>  
+                <a href="#card_section">
+    
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Start
+                </a>
+                
+            </div>
+    
+            
+          
+    
+        </div>
+    </section>
+
+    <section>
+
+
+        <div class="section1 container" id="section1">
+    
+            <div class="grid-container">
+    
+                <div class="grid-item">  
+    
+                    <h1> SO </h1>
+    
+                </div>
+                <div class="grid-item"> 
+    
+                    <h1> SLEEPY </h1>
+                </div>
+                <div class="grid-item"> 
+    
+                    <h1> KRUB </h1>
+    
+                </div>
+    
+    
+            </div>
+            
+    
+    
+    
+        </div>
+    </section>
+    
+
+    <section>
+
+        <div class="outer-swiper container" id="card_section">
+            <div class="left">
+    
+            </div>
+            <div class="center">
+    
+                <div class="card-header">
+    
+                    <h2 class="card-name"></h2>
+    
+    
+                </div>
+    
+                <div class="swiper">
+                    <!-- <div class="card" id="card-main">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <h1>Front Side</h1>
+                                <p>This is the front side of the card.</p>
+                            </div>
+                            <div class="flip-card-back">
+                                <h1>Back Side</h1>
+                                <p>This is the back side of the card.</p>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="footer">
+
+                    <button class="edit-button" onclick="flip_card()">FLIP</button>
+                    <button class="edit-button" onclick="AddOn()">ADD</button>
+
+                </div>
+                
+            </div>
+                
+               
+                
+            <div class="right">
+                
+                <div class="edit-form" >
+                    <h1>form</h1>
+                    <form id="add-data-form">
+                        <label for="html">word</label><br>
+                        <input type="text" id="word" ><br>
+                        <label for="css">definition</label><br>
+                        <input type="text" id="definition" ><br>
+                        <button type="submit" class="custom-submit-button" onclick="AddOn()">Submit</button>
+                      </form>
+        
+                </div>
+            </div>
+          
+
+            
+        </div>
+    </section>
+
+
+
+    <section>
+
+        <div class="summary container">
+            <div class="summary-panel">
+    
+                <div class="panel" id="correct">
+                    <h1>Correct</h1>
+    
+                    <h2 id="correct-score"></h2>
+                </div>
+                <div class="panel" id="incorrect">
+                    
+                    <h1>Incorrect</h1>
+                    
+                    <h2 id="incorrect-score"></h2>
+                </div>
+            </div>
+        </div>
+       
+    </section>
+
+    <script type="module" src="card.js"></script>
+    <script type="module" src="script.js"></script>
+    <script type="module" src="fetching.js"></script>
+    <!-- <script type="module" src="flipcard.js"></script> -->
+
+    <script>
+
+        function AddOn(){
+            const div = document.querySelector(".edit-form");
+           
+            if (div.style.display === "none" || div.style.display === "") {
+              div.style.display = "block"; // Show the div
+              setTimeout(() => {
+                  div.style.opacity = "1"; // Fade in the div after displaying
+              }, 5); // Use a small delay for smoother transition
+          } else {
+              div.style.opacity = "0"; // Fade out the div
+              setTimeout(() => {
+                  div.style.display = "none"; // Hide the div after fading out
+              }, 5); // Use the same duration as the transition
+          }
+        }
+
+        function flip_card(){
+            const card_flip = document.querySelector(".flip-card-inner");
+            card_flip.classList.toggle('is-flipped');
+            console.log("here");
+        }
+        
+    </script>
+
+</body>
+</html>
