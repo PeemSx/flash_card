@@ -14,7 +14,7 @@ var i;
 let isFlip = false;
 let idx_card;
 
-const url = "3.94.54.149";
+const url = "localhost";
 const summary_section = document.querySelector(".summary");
 let name_swiper
 const screenWidth = window.innerWidth;
@@ -41,7 +41,8 @@ fetch(`http://${url}:3222/products/`)
   });
 
 function appendCard(data,i){
-
+  is_right = false;
+  is_left = false;
   const card_name = document.querySelector(".card-name");
     const appendElem = document.createElement("h2");
     appendElem.innerHTML = `${data[0].name}`;
@@ -68,7 +69,7 @@ function appendCard(data,i){
                         </div>`
       
       swiper.appendChild(card);
-      flip_card();
+   
         card.addEventListener('mousedown', (e) => {
             is_draging = true;
             card.style.transition = "none";
@@ -101,11 +102,11 @@ function appendCard(data,i){
           card.style.transition = 'transform 0.3s ease-in-out';
           card.style.transform = `translate(0, 0)`;
           is_draging = false;
-          alert("ใจเย็นพี่ไม่ต้องรีบ");
+          //alert("ใจเย็นพี่ไม่ต้องรีบ");
         });
         
         card.addEventListener('mouseup', (e) => {
-          mouseUpCheck();
+    
           if (!is_draging) return;
           if(is_left){
             cnt_correct++;
@@ -118,7 +119,8 @@ function appendCard(data,i){
 
           }else if(is_right){
             cnt_incorrect++;
-            card.remove();
+            card.remove(); 
+           
             summary(card.getAttribute("id"),data[0].words.length-1);
             if(i < data[0].words.length-1){
               i++;
@@ -149,9 +151,3 @@ function summary(index,words_limit){
 
 }
   
-function mouseUpCheck() {
-  dtime = null;
-  window.removeEventListener('mouseup', mouseUpCheck);   
-  clearInterval(i);
-}
-

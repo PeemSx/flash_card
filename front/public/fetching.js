@@ -1,4 +1,6 @@
   const form = document.getElementById("add-data-form");
+  const url = "localhost";
+  let name_swiper = "test1";
   form.addEventListener("submit", function(e) {
 
     e.preventDefault();
@@ -6,37 +8,34 @@
     const word = document.getElementById('word').value;
     const definition = document.getElementById('definition').value;
 
-    // Create an object with the data you want to send in the request body
     const data = {
         "word": word,
         "definition": definition,
     };
-
-    // Make a PUT request using the fetch API
   
-    fetch(`http://${url}:3222/products/name/${name_swiper}`, { // Replace 'YourProductName' with the actual product name
+    fetch(`http://${url}:3222/products/name/${name_swiper}`, {
         method: 'PUT',
         headers: {
-            'Content-Type': 'application/json', // Set the content type to JSON
+            'Content-Type': 'application/json', 
         },
-        body: JSON.stringify(data), // Convert the data object to a JSON string
+        body: JSON.stringify(data), 
     })
         .then((response) => {
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
           
-            return response.json(); // Parse the JSON response
+            return response.json(); 
             
         })
         .then((updatedProduct) => {
           alert("เรียบร้อยค่ะเตง")
             console.log('Product updated:', updatedProduct);
-            // Handle the successful response as needed
+
         })
         .catch((error) => {
             console.error('Error:', error);
-            // Handle errors here
+    
         });
 
     })
