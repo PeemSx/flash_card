@@ -1,4 +1,4 @@
-import { draggingFunc } from "./card.js";
+// import { draggingFunc } from "./card.js";
 
 const container = document.querySelector(".flash-card-section");
 const footer_card = document.querySelector("#center-section #footer-center")
@@ -29,10 +29,10 @@ fetch(`http://${url}:3222/products/`)
     }
   })
   .then((data) => {
-    console.log(data[0].words[0]);
-
+    console.log(data[5].wordDefinitions[0].word);
+    
     id = 0;
-    name_swiper = data[0].name;
+    name_swiper = data[5].name;
     appendCard(data,id);
    
   })
@@ -45,10 +45,9 @@ function appendCard(data,i){
   is_left = false;
   const card_name = document.querySelector(".card-name");
     const appendElem = document.createElement("h2");
-    appendElem.innerHTML = `${data[0].name}`;
+    appendElem.innerHTML = `${data[5].name}`;
     if(i == id){
       card_name.appendChild(appendElem);
-
     }
     const swiper = document.querySelector(".swiper");
 
@@ -59,11 +58,11 @@ function appendCard(data,i){
 
       card.innerHTML = `<div class="flip-card-inner"> 
                           <div class="flip-card-front">
-                            <h1>${data[0].words[i]}</h1>
+                            <h1>${data[5].wordDefinitions[i].word}</h1>
                             <p>This is the front side of the card.</p>
                           </div>
                           <div class="flip-card-back">
-                            <h1>${data[0].definitions[i]}</h1>
+                            <h1>${data[5].wordDefinitions[i].definition}</h1>
                             <p>This is the back side of the card.</p>
                           </div>
                         </div>`
@@ -83,18 +82,18 @@ function appendCard(data,i){
           x = e.clientX - x_begin;
           y = e.clientY - y_begin;
           card.style.transform = `translate(${x}px, ${y}px)`;
-          //console.log(x)
+  
           if (x < -threshold) {
             is_left = true;
-            //console.log("Card is being dragged to the left");
-        } else if (x > threshold) {
-            is_right = true;
-            //console.log("Card is being dragged to the right");
-        } else {
-            is_right = false;
-            is_left = false;
-            //console.log("Card is in the center");
-        }
+ 
+          } else if (x > threshold) {
+              is_right = true;
+          
+          } else {
+              is_right = false;
+              is_left = false;
+
+          }
         });
       
         card.addEventListener('mouseleave', (e) => {
@@ -111,8 +110,8 @@ function appendCard(data,i){
           if(is_left){
             cnt_correct++;
             card.remove();
-            summary(card.getAttribute("id"),data[0].words.length-1);
-            if(i < data[0].words.length-1){
+            summary(card.getAttribute("id"),data[5].wordDefinitions.length-1);
+            if(i < data[5].wordDefinitions.length-1){
               i++;
               appendCard(data,i);
             }
@@ -121,8 +120,8 @@ function appendCard(data,i){
             cnt_incorrect++;
             card.remove(); 
            
-            summary(card.getAttribute("id"),data[0].words.length-1);
-            if(i < data[0].words.length-1){
+            summary(card.getAttribute("id"),data[5].wordDefinitions.length-1);
+            if(i < data[5].wordDefinitions.length-1){
               i++;
               appendCard(data,i);
             }      

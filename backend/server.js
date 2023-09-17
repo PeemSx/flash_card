@@ -76,7 +76,7 @@ app.post('/products/post', async(req,res) =>{
 
 })
 
-//--------------- Put / update ------------------------
+// --------------- Put / update ------------------------
 
 
 app.put('/products/id/:id',async(req,res) =>{
@@ -100,6 +100,22 @@ app.put('/products/name/:name',async(req,res) =>{
         const {name} = req.params;     
         const {word, definition} = req.body;
         const products = await Product.findOneAndUpdate({name:name}, {$push:{words : word,definitions : definition}});
+        if(!products){
+            return res.status(404).json({message: `cannot find any product with ID ${id}`});
+        }
+        res.status(200).json(products);
+    }catch(error){
+        res.status(500).json({message: error.message})
+    }
+})
+
+//remove words
+
+app.put('/products/name/:name/remove',async(req,res) =>{
+    try{
+        const {name} = req.params;     
+        const {word, definition} = req.body;
+        const products = await Product.findOneAndUpdate({name:name}, {$pull:{words : word,definitions : definition}});
         if(!products){
             return res.status(404).json({message: `cannot find any product with ID ${id}`});
         }

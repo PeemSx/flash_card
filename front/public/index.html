@@ -113,9 +113,10 @@
                     </div> -->
                 </div>
                 <div class="footer">
-
+                    
                     <button class="edit-button" onclick="flip_card()">FLIP</button>
                     <button class="edit-button" onclick="AddOn()">ADD</button>
+                    <button class="edit-button" onclick="remove_card()">REMOVE</button>
 
                 </div>
                 
@@ -132,10 +133,10 @@
                         <input type="text" id="word" ><br>
                         <label for="css">definition</label><br>
                         <input type="text" id="definition" ><br>
-                        <button type="submit" class="custom-submit-button" onclick="AddOn()">Submit</button>
+                        <button type="submit" class="custom-submit-button" onclick="add_card()">Submit</button>
                       </form>
-        
                 </div>
+
             </div>
           
 
@@ -145,7 +146,7 @@
 
 
 
-    <section>
+    <section >
 
         <div class="summary container">
             <div class="summary-panel">
@@ -166,9 +167,9 @@
        
     </section>
 
-    <script type="module" src="card.js"></script>
-    <script type="module" src="script.js"></script>
-    <script type="module" src="fetching.js"></script>
+    <script src="card.js"></script>
+    <script src="script.js"></script>
+    <script  src="fetching.js"></script>
     <!-- <script type="module" src="flipcard.js"></script> -->
 
     <script>
@@ -177,14 +178,15 @@
             const div = document.querySelector(".edit-form");
            
             if (div.style.display === "none" || div.style.display === "") {
-              div.style.display = "block"; // Show the div
-              setTimeout(() => {
-                  div.style.opacity = "1"; // Fade in the div after displaying
+                div.style.display = "block"; // Show the div
+                setTimeout(() => {
+                div.style.opacity = "1"; // Fade in the div after displaying
               }, 5); // Use a small delay for smoother transition
           } else {
-              div.style.opacity = "0"; // Fade out the div
-              setTimeout(() => {
-                  div.style.display = "none"; // Hide the div after fading out
+
+                div.style.opacity = "0"; // Fade out the div
+                setTimeout(() => {
+                div.style.display = "none"; // Hide the div after fading out
               }, 5); // Use the same duration as the transition
           }
         }
@@ -195,6 +197,11 @@
             console.log("here");
         }
         
+        function remove_card(){
+            const card_flip = document.querySelector(".flip-card-inner");
+            card_flip.classList.toggle('is-flipped');
+            console.log("here");
+        }
     </script>
 
 </body>
