@@ -13,6 +13,7 @@ var dtime;
 var i;
 let isFlip = false;
 let idx_card;
+const idx_doc = 4;
 
 const url = "localhost";
 const summary_section = document.querySelector(".summary");
@@ -29,10 +30,10 @@ fetch(`http://${url}:3222/products/`)
     }
   })
   .then((data) => {
-    console.log(data[5].wordDefinitions[0].word);
+    console.log(data[idx_doc].wordDefinitions[0].word);
     
     id = 0;
-    name_swiper = data[5].name;
+    name_swiper = data[idx_doc].name;
     appendCard(data,id);
    
   })
@@ -45,7 +46,7 @@ function appendCard(data,i){
   is_left = false;
   const card_name = document.querySelector(".card-name");
     const appendElem = document.createElement("h2");
-    appendElem.innerHTML = `${data[5].name}`;
+    appendElem.innerHTML = `${data[idx_doc].name}`;
     if(i == id){
       card_name.appendChild(appendElem);
     }
@@ -58,11 +59,11 @@ function appendCard(data,i){
 
       card.innerHTML = `<div class="flip-card-inner"> 
                           <div class="flip-card-front">
-                            <h1>${data[5].wordDefinitions[i].word}</h1>
+                            <h1>${data[idx_doc].wordDefinitions[i].word}</h1>
                             <p>This is the front side of the card.</p>
                           </div>
                           <div class="flip-card-back">
-                            <h1>${data[5].wordDefinitions[i].definition}</h1>
+                            <h1>${data[idx_doc].wordDefinitions[i].definition}</h1>
                             <p>This is the back side of the card.</p>
                           </div>
                         </div>`
@@ -110,8 +111,8 @@ function appendCard(data,i){
           if(is_left){
             cnt_correct++;
             card.remove();
-            summary(card.getAttribute("id"),data[5].wordDefinitions.length-1);
-            if(i < data[5].wordDefinitions.length-1){
+            summary(card.getAttribute("id"),data[idx_doc].wordDefinitions.length-1);
+            if(i < data[idx_doc].wordDefinitions.length-1){
               i++;
               appendCard(data,i);
             }
@@ -120,8 +121,8 @@ function appendCard(data,i){
             cnt_incorrect++;
             card.remove(); 
            
-            summary(card.getAttribute("id"),data[5].wordDefinitions.length-1);
-            if(i < data[5].wordDefinitions.length-1){
+            summary(card.getAttribute("id"),data[idx_doc].wordDefinitions.length-1);
+            if(i < data[idx_doc].wordDefinitions.length-1){
               i++;
               appendCard(data,i);
             }      

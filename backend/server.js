@@ -81,8 +81,11 @@ app.post('/products/post', async(req,res) =>{
 
 app.put('/products/id/:id',async(req,res) =>{
     try{
-        const {id} = req.params;     
+        const {id} = req.params;   
+        const {word, definition} = req.body;  
         const products = await Product.findByIdAndUpdate(id, req.body);
+        products.wordDefinitions.push({word,definition});
+        await products.save();
         if(!products){
             return res.status(404).json({message: `cannot find any product with ID ${id}`});
         }
@@ -99,7 +102,8 @@ app.put('/products/name/:name',async(req,res) =>{
     try{
         const {name} = req.params;     
         const {word, definition} = req.body;
-        const products = await Product.findOneAndUpdate({name:name}, {$push:{words : word,definitions : definition}});
+        const products = await Product.findOneAndUpdate({name:name},{$push:{wordDefinitions:{word,definition}}});
+        
         if(!products){
             return res.status(404).json({message: `cannot find any product with ID ${id}`});
         }
