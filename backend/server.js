@@ -119,7 +119,7 @@ app.put('/products/name/:name/remove',async(req,res) =>{
     try{
         const {name} = req.params;     
         const {word, definition} = req.body;
-        const products = await Product.findOneAndUpdate({name:name}, {$pull:{words : word,definitions : definition}});
+        const products = await Product.findOneAndUpdate({name:name}, {$pull:{wordDefinitions:{word,definition}}});
         if(!products){
             return res.status(404).json({message: `cannot find any product with ID ${id}`});
         }

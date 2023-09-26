@@ -59,11 +59,11 @@ function appendCard(data,i){
 
       card.innerHTML = `<div class="flip-card-inner"> 
                           <div class="flip-card-front">
-                            <h1>${data[idx_doc].wordDefinitions[i].word}</h1>
+                            <h1 id="word_on_card">${data[idx_doc].wordDefinitions[i].word}</h1>
                             <p>This is the front side of the card.</p>
                           </div>
                           <div class="flip-card-back">
-                            <h1>${data[idx_doc].wordDefinitions[i].definition}</h1>
+                            <h1 id="definition_on_card">${data[idx_doc].wordDefinitions[i].definition}</h1>
                             <p>This is the back side of the card.</p>
                           </div>
                         </div>`
