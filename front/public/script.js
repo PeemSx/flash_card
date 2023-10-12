@@ -135,19 +135,41 @@ function appendCard(data,i){
 }
 
 function summary(index,words_limit){
-
+  
   if(index == `card-num-${words_limit}`){
 
     console.log("This is the last card");
 
     const correct_text = document.querySelector("#correct-score");
     const incorrect_text = document.querySelector("#incorrect-score");
-
-    correct_text.innerHTML = `${cnt_correct}`;
+    initiateIMG();
+    correct_text.innerHTML = `${cnt_correct} / ${cnt_incorrect+cnt_correct} `;
     incorrect_text.innerHTML = `${cnt_incorrect}`;
 
   }
 
 
 }
-  
+
+function setOpacity(){
+
+  if(is_left){
+
+  }
+
+}
+
+function initiateIMG(){
+
+  var imgElement = document.querySelector('img[alt="summary_img"]');
+  imgElement.style.display = "block";
+  if(cnt_correct == cnt_correct + cnt_incorrect){
+    imgElement.setAttribute("src" , "./images/full.png");
+  }else if(cnt_correct >= cnt_incorrect){
+    imgElement.setAttribute("src" , "./images/correctmore.png");
+  }else{
+    imgElement.setAttribute("src" , "./images/incorrectmore.png");
+  }
+
+
+}

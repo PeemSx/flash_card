@@ -1,4 +1,4 @@
-  const form = document.getElementById("add-data-form");
+const form = document.getElementById("add-data-form");
 
 
 function add_card(){
@@ -33,7 +33,7 @@ function add_card(){
           .then((updatedProduct) => {
             alert("เรียบร้อยค่ะเตง")
               console.log('Product updated:', updatedProduct);
-  
+              window.location.reload();
           })
           .catch((error) => {
               console.error('Error:', error);
@@ -74,7 +74,7 @@ function remove_card(){
           .then((updatedProduct) => {
             alert("ลบเรียบร้อยแล้วค่ะเตง")
               console.log('Product updated:', updatedProduct);
-  
+            window.location.reload();
           })
           .catch((error) => {
               console.error('Error:', error);

@@ -285,7 +285,9 @@ a.logo{
     perspective-origin: center 50%;
     transform-style: preserve-3d;
     position: relative;
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .card {
@@ -372,14 +374,32 @@ a.logo{
 }
 
 .left{
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 20%;
+    color: white;
+
+}
+.left img{
+    filter: invert(100%);
+    width: 100px;
+    opacity: 30%    ;
 
 }
 .right{
     width: 20%;
+    
     display: flex;
     justify-content: center;
+
+}
+.right img{
+
+    filter: invert(100%);
+    width: 120px;
+    opacity: 10%;
 
 }
 .center{
@@ -390,18 +410,26 @@ a.logo{
 }
 
 .edit-form{
-
+    border-radius: 20px;
     background-color: #c758be;
+    color: #fff;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     display: none;
+    height: 500px;
+    width: 100%;
 
 }
 
 .custom-submit-button {
-    background-color: #3498db;
+    background-color: #551A8B;
     color: #fff;
     border: none;
     padding: 10px 20px;
     font-size: 16px;
+ 
     border-radius: 5px;
     position: relative;
     margin-left: 37px;
@@ -418,6 +446,19 @@ a.logo{
 
 /*------------ summary section ------------*/
 
+#summary_img{
+
+    height: auto;
+    width: 500px;
+
+}
+
+#correct-score{
+
+    color: white;
+    font-size: 40px ;
+
+}
 .summary{
 
     height: 100vh;

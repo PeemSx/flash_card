@@ -32,8 +32,8 @@
         <div class="header container">
     
             <div class="middle-text">
-                <h1>Hi ! I'm Peem</h1>
-                <h2>I'm a freshy CEDT strudent from CU</h2>  
+                <h1>Hi ! broski</h1>
+                <h2>Let's see our Flashcard Website</h2>  
                 <a href="#card_section">
     
                     <span></span>
@@ -51,7 +51,7 @@
         </div>
     </section>
 
-    <section>
+    <!-- <section>
 
 
         <div class="section1 container" id="section1">
@@ -81,12 +81,16 @@
     
         </div>
     </section>
-    
+     -->
 
     <section>
 
         <div class="outer-swiper container" id="card_section">
             <div class="left">
+                <img src="images/check-mark.png" alt="">
+            
+               
+
     
             </div>
             <div class="center">
@@ -97,8 +101,23 @@
     
     
                 </div>
-    
+                <h2 id="correct-score"></h2>
+                <div class="edit-form" >
+                    <h1>form</h1>
+                    <br>
+                    <form id="add-data-form" autocomplete="off">
+                        <label for="html">word</label>
+                        <br>
+                        <input type="text" id="word" ><br>
+                        <br>
+                        <label for="css">definition</label><br>
+                        <input type="text" id="definition" ><br>
+                        <br>
+                        <button type="submit" class="custom-submit-button" onclick="add_card()">Submit</button>
+                    </form>
+                </div>
                 <div class="swiper">
+                    <img src="" alt="summary_img" id = "summary_img" style="display: none;">
                     <!-- <div class="card" id="card-main">
                         <div class="flip-card-inner">
                             <div class="flip-card-front">
@@ -125,17 +144,8 @@
                
                 
             <div class="right">
-                
-                <div class="edit-form" >
-                    <h1>form</h1>
-                    <form id="add-data-form">
-                        <label for="html">word</label><br>
-                        <input type="text" id="word" ><br>
-                        <label for="css">definition</label><br>
-                        <input type="text" id="definition" ><br>
-                        <button type="submit" class="custom-submit-button" onclick="add_card()">Submit</button>
-                      </form>
-                </div>
+                <img src="images/incorrect.png" alt="">
+          
 
             </div>
           
@@ -144,9 +154,7 @@
         </div>
     </section>
 
-
-
-    <section >
+    <!-- <section >
 
         <div class="summary container">
             <div class="summary-panel">
@@ -165,7 +173,7 @@
             </div>
         </div>
        
-    </section>
+    </section> -->
 
     <script src="card.js"></script>
     <script src="script.js"></script>
@@ -176,14 +184,15 @@
 
         function AddOn(){
             const div = document.querySelector(".edit-form");
-           
+            const swiper = document.querySelector(".swiper");
             if (div.style.display === "none" || div.style.display === "") {
-                div.style.display = "block"; // Show the div
+                div.style.display = "flex"; // Show the div
+                swiper.style.display = "none";
                 setTimeout(() => {
                 div.style.opacity = "1"; // Fade in the div after displaying
               }, 5); // Use a small delay for smoother transition
           } else {
-
+                swiper.style.display = "block";
                 div.style.opacity = "0"; // Fade out the div
                 setTimeout(() => {
                 div.style.display = "none"; // Hide the div after fading out
